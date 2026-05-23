@@ -7,3 +7,6 @@ class Solution:
         else:
             return False
         
+        # or also this oneliner
+        # return str(x) == str(x)[::-1]
+        
