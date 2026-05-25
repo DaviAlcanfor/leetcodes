@@ -1,6 +1,17 @@
 class Solution:
   def countDistinctPermutationsOfAWord(self, s: str) -> int:
-    from math import prod, factorial 
+
+    def factorial(n: int) -> int:
+      if n <= 1:
+        return 1
+      return n * factorial(n - 1)
+
+    def prod(*nums) -> int:
+      result = 1
+      for n in nums:
+          result *= n
+      return result
+
     
     rep = {
       x: s.count(x) 
@@ -8,4 +19,6 @@ class Solution:
       if s.count(x) > 1  
     }
 
-    return factorial(len(s)) // prod(factorial(v) for v in rep.values())
+    return factorial(len(s)) // prod(*(factorial(v) for v in rep.values()))
+
+    # o(n²)
